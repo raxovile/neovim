@@ -1,10 +1,6 @@
 return {
   { 'tpope/vim-fugitive' }, -- Git integration
   { 
-    'rcarriga/nvim-dap-ui', -- DAP UI for debugging
-    dependencies = { 'mfussenegger/nvim-dap' }
-  },
-  { 
     'lewis6991/gitsigns.nvim', -- Git signs
     opts = {
       signs = {
