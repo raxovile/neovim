@@ -1,40 +1,40 @@
 -- Load global vim configurations
-require 'globals'
+require("globals")
 
 -- Load vim option configurations
-require 'options'
+require("options")
 
 -- Load vim basic autocommands
-require 'basicAutocommands'
+require("basicAutocommands")
 
 -- Load lazy.vim as Plugin Manager
-require 'lazyInstallation'
+require("lazyInstallation")
 
 -- Configure and install plugins
-require('lazy').setup({
-  { import = 'plugins.utility' },
-  { import = 'plugins.lsp' },
-  { import = 'plugins.editor' },
-  { import = 'plugins.theme' },
-  { import = 'plugins.completion' },
-  { import = 'plugins.dap'}
+require("lazy").setup({
+	{ import = "plugins.utility" },
+	{ import = "plugins.lsp" },
+	{ import = "plugins.editor" },
+	{ import = "plugins.theme" },
+	{ import = "plugins.completion" },
+	{ import = "plugins.dap" },
 }, {
-  ui = {
-    -- Customize the LazyVim UI
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
+	ui = {
+		-- Customize the LazyVim UI
+		icons = vim.g.have_nerd_font and {} or {
+			cmd = "⌘",
+			config = "🛠",
+			event = "📅",
+			ft = "📂",
+			init = "⚙",
+			keys = "🗝",
+			plugin = "🔌",
+			runtime = "💻",
+			require = "🌙",
+			source = "📄",
+			start = "🚀",
+			task = "📌",
+			lazy = "💤 ",
+		},
+	},
 })
