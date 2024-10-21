@@ -55,6 +55,31 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - Zeigt LSP-Statusinformationen wie Linting und Fehlerstatus in der Statusleiste an.
 - **dense-analysis/ale**:
   - Asynchrone Linting-Engine, die Fehler und Warnungen während der Codebearbeitung anzeigt.
+- **TheLeoP/powershell.nvim**:
+  - PowerShell Language Server Protocol (LSP) Unterstützung, bietet Autocomplete und Fehlerüberprüfung für PowerShell-Skripte.
+- **jose-elias-alvarez/null-ls.nvim**:
+  - Integration von externen Linter-, Formatter- und anderen Tools in den Neovim LSP. Unterstützt benutzerdefinierte Konfigurationen für verschiedene Sprachen.
+  - Beispiel für die Konfiguration von `stylua` für Lua-Dateien:
+
+    ```lua
+    null_ls.setup {
+      sources = {
+        null_ls.builtins.formatting.stylua,
+      },
+    }
+    ```
+- **neovim/nvim-lspconfig**:
+  - Haupt-Plugin für die Konfiguration und Verwaltung von LSP-Servern.
+  - **williamboman/mason.nvim**:
+    - Automatische Installation und Verwaltung von LSPs und zugehörigen Tools.
+  - **williamboman/mason-lspconfig.nvim**:
+    - Integration von mason.nvim mit nvim-lspconfig.
+  - **WhoIsSethDaniel/mason-tool-installer.nvim**:
+    - Automatische Installation von Tools, die von LSPs verwendet werden.
+  - **j-hui/fidget.nvim**:
+    - Zeigt nützliche Status-Updates für LSP an.
+  - **hrsh7th/cmp-nvim-lsp**:
+    - Zusätzliche LSP-Fähigkeiten für nvim-cmp.
 
 ### Editor Plugins
 
@@ -65,7 +90,7 @@ Die Konfigurationsdateien sind wie folgt organisiert:
 - **lewis6991/gitsigns.nvim**:
   - Zeigt Git-Änderungen in der Gutter-Leiste an (z.B. geänderte, hinzugefügte und entfernte Zeilen).
 - **windwp/nvim-autopairs**:
-  - Automatisches Einfügen und schließen von Klammern und Anführungszeichen.
+  - Automatisches Einfügen und Schließen von Klammern, Anführungszeichen und anderen Zeichen.
 - **stevearc/conform.nvim**:
   - Automatisches Formatieren von Code beim Speichern.
 
@@ -86,6 +111,17 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - LSP-Quelle für nvim-cmp.
 - **hrsh7th/cmp-path**:
   - Dateipfad-Quelle für nvim-cmp.
+- **folke/lazydev.nvim**:
+  - Konfiguriert die Lua LSP für Neovim-Konfigurationen, Laufzeit und Plugins. Bietet Vervollständigung, Annotationen und Signaturen für Neovim-APIs.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    require('lazydev').setup {
+      library = {
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    }
+    ```
 
 ### DAP Plugins
 
