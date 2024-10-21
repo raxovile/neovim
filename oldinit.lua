@@ -30,15 +30,6 @@
     end,
   },
   {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {
-        disable_filetype = { 'TelescopePrompt', 'vim' },
-        check_ts = true, -- Enable treesitter integration
-      }
-    end,
-  },
-  {
     'jose-elias-alvarez/null-ls.nvim',
     config = function()
       local null_ls = require 'null-ls'
