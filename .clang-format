@@ -1,0 +1,59 @@
+BasedOnStyle: Microsoft
+
+# Use 4 spaces for indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Column limit for line length
+ColumnLimit: 120
+
+# Brace wrapping style
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  IndentBraces: false
+
+# Indent switch case labels
+IndentCaseLabels: true
+
+# Spacing options
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInContainerLiterals: false
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: false
+SpaceAfterLogicalNot: false
+
+# Align trailing comments
+AlignTrailingComments: true
+
+# Allow short functions and statements on a single line
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+
+# Control the placement of commas in lists
+BinPackArguments: false
+BinPackParameters: false
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 60
+PenaltyBreakString: 20
+PenaltyBreakTemplateDeclaration: 10
+
+# Sort #includes
+SortIncludes: false
+
+# Continuation indentation
+ContinuationIndentWidth: 4
