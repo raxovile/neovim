@@ -3,10 +3,10 @@ return {
     'mfussenegger/nvim-dap',
     config = function()
       local dap = require 'dap'
-  
+
       -- Pfad zu den Tools
       local tools_path = os.getenv 'TOOLS'
-  
+
       -- Konfiguration für .NET (netcoredbg)
       dap.adapters.coreclr = {
         type = 'executable',
@@ -23,7 +23,6 @@ return {
           end,
         },
       }
-  
       -- Konfiguration für PowerShell (PSES - PowerShell Editor Services)
       dap.adapters.powershell = {
         type = 'executable',
@@ -39,7 +38,7 @@ return {
         }]],
         },
       }
-  
+
       dap.configurations.powershell = {
         {
           type = 'powershell',
@@ -53,9 +52,9 @@ return {
           stopOnEntry = false,
         },
       }
-  
+
       dap.configurations.ps1 = dap.configurations.powershell
-  
+
       -- Keybindings für nvim-dap
       vim.api.nvim_set_keymap('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<F10>', "<Cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
@@ -80,6 +79,6 @@ return {
   },
   {
     'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap' }
+    dependencies = { 'mfussenegger/nvim-dap' },
   },
 }
