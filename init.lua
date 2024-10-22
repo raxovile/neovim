@@ -20,6 +20,7 @@ require('lazy').setup({
   { import = 'plugins.dap' },
   { import = 'plugins.telescope' },
   { import = 'plugins.which-key' },
+  { import = 'plugins.indent-blankline' },
 }, {
   ui = {
     -- Customize the LazyVim UI
