@@ -1,5 +1,9 @@
 # neovim configuration
 
+# Meine Neovim-Konfiguration
+
+Dies ist meine persönliche Neovim-Konfiguration, die verschiedene Plugins und Anpassungen enthält, um meinen Workflow zu optimieren.
+
 ## Inhaltsverzeichnis
 
 - [Ordnerstruktur](#ordnerstruktur)
@@ -11,23 +15,15 @@
   - [Completion Plugins](#completion-plugins)
   - [DAP Plugins](#dap-plugins)
   - [Fuzzy Finder Plugins](#fuzzy-finder-plugins)
+  - [Key Mapping Plugins](#key-mapping-plugins)
 
 ## Ordnerstruktur
 
 Die Konfigurationsdateien sind wie folgt organisiert:
-```
-~/.config/nvim/ 
-├── init.lua 
-└── lua 
-  ├── basicAutocommands.lua 
-  ├── globals.lua 
-  ├── lazyInstallation.lua 
-  ├── options.lua 
-  ├── plugins 
-    │   
-    ├── completion.lua 
-    │   ├── dap.lua │   ├── editor.lua │   ├── lsp.lua │   ├── telescope.lua │   ├── ui.lua │   └── utility.lua
-```
+
+~/.config/nvim/ ├── init.lua └── lua ├── basicAutocommands.lua ├── globals.lua ├── lazyInstallation.lua ├── options.lua ├── plugins │   ├── completion.lua │   ├── dap.lua │   ├── editor.lua │   ├── lsp.lua │   ├── telescope.lua │   ├── which-key.lua │   ├── ui.lua │   └── utility.lua
+
+Copy
 
 ## Plugins
 
@@ -56,13 +52,16 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - PowerShell Language Server Protocol (LSP) Unterstützung, bietet Autocomplete und Fehlerüberprüfung für PowerShell-Skripte.
 - **jose-elias-alvarez/null-ls.nvim**:
   - Integration von externen Linter-, Formatter- und anderen Tools in den Neovim LSP. Unterstützt benutzerdefinierte Konfigurationen für verschiedene Sprachen.
-  - Beispiel für die Konfiguration von `clang_format` für mehrere Sprachen:
+  - Beispiel für die Konfiguration von `clang_format` und `prettier` für mehrere Sprachen:
 
     ```lua
     require('null-ls').setup {
       sources = {
         require('null-ls').builtins.formatting.clang_format.with {
           filetypes = { 'c', 'cpp', 'cs', 'typescript', 'javascript', 'json' },
+        },
+        require('null-ls').builtins.formatting.prettier.with {
+          filetypes = { 'javascript', 'typescript', 'css', 'json', 'yaml', 'markdown', 'html' },
         },
       },
     }
@@ -94,6 +93,8 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - Automatisches Einfügen und Schließen von Klammern, Anführungszeichen und anderen Zeichen.
 - **stevearc/conform.nvim**:
   - Automatisches Formatieren von Code beim Speichern.
+- **prettier**:
+  - Ein Code-Formatierer, der von Null-LS verwendet wird, unterstützt verschiedene Dateitypen wie JavaScript, CSS, JSON, YAML, Markdown und HTML.
 
 ### UI Plugins
 
@@ -111,7 +112,7 @@ Die Konfigurationsdateien sind wie folgt organisiert:
 - **hrsh7th/cmp-nvim-lsp**:
   - LSP-Quelle für nvim-cmp.
 - **hrsh7th/cmp-path**:
-  - Dateipfad-Quelle für nvim-cmp.
+  - Pfadquelle für nvim-cmp.
 - **folke/lazydev.nvim**:
   - Konfiguriert die Lua LSP für Neovim-Konfigurationen, Laufzeit und Plugins. Bietet Vervollständigung, Annotationen und Signaturen für Neovim-APIs.
   - Beispiel für die Konfiguration:
@@ -135,6 +136,25 @@ Die Konfigurationsdateien sind wie folgt organisiert:
     - **nvim-tree/nvim-web-devicons**: Icons für eine ansprechendere Darstellung (erfordert Nerd Fonts).
     - **nvim-telescope/telescope-file-browser.nvim**: Dateibrowser-Erweiterung für Telescope.
 
+### Key Mapping Plugins
+
+- **folke/which-key.nvim**:
+  - Plugin, das eine visuelle Übersicht für verfügbare Tastenbindungen bietet.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    require('which-key').setup()
+    require('which-key').add {
+      { '<leader>c', group = '[C]ode' },
+      { '<leader>d', group = '[D]ocument' },
+      { '<leader>r', group = '[R]ename' },
+      { '<leader>s', group = '[S]earch' },
+      { '<leader>w', group = '[W]orkspace' },
+      { '<leader>t', group = '[T]oggle' },
+      { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+    }
+    ```
+
 ### DAP Plugins
 
 - **mfussenegger/nvim-dap**:
@@ -142,13 +162,4 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - Konfigurationen für .NET (netcoredbg) und PowerShell (PSES - PowerShell Editor Services).
 - **rcarriga/nvim-dap-ui**:
   - Benutzeroberfläche für nvim-dap, um Debugging-Informationen grafisch anzuzeigen.
-## Installation
 
-1. Klone dieses Repository in dein Neovim-Konfigurationsverzeichnis:
-   ```sh
-   git clone <dein-repo-url> ~/.config/nvim
-   ```
-
-2. Installiere die Plugins, indem du Neovim startest und den Befehl `:Lazy sync` ausführst.
-
-3. Genieße deine neue Neovim-Konfiguration!

@@ -19,6 +19,7 @@ require('lazy').setup({
   { import = 'plugins.completion' },
   { import = 'plugins.dap' },
   { import = 'plugins.telescope' },
+  { import = 'plugins.which-key' },
 }, {
   ui = {
     -- Customize the LazyVim UI
