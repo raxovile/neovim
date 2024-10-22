@@ -10,26 +10,23 @@
   - [UI Plugins](#ui-plugins)
   - [Completion Plugins](#completion-plugins)
   - [DAP Plugins](#dap-plugins)
+  - [Fuzzy Finder Plugins](#fuzzy-finder-plugins)
 
 ## Ordnerstruktur
 
 Die Konfigurationsdateien sind wie folgt organisiert:
-
 ```
-~/.config/nvim/
-├── init.lua
-└── lua
-    ├── basicAutocommands.lua
-    ├── globals.lua
-    ├── lazyInstallation.lua
-    ├── options.lua
-    ├── plugins
-    │   ├── completion.lua
-    │   ├── dap.lua
-    │   ├── editor.lua
-    │   ├── lsp.lua
-    │   ├── ui.lua
-    │   └── utility.lua
+~/.config/nvim/ 
+├── init.lua 
+└── lua 
+  ├── basicAutocommands.lua 
+  ├── globals.lua 
+  ├── lazyInstallation.lua 
+  ├── options.lua 
+  ├── plugins 
+    │   
+    ├── completion.lua 
+    │   ├── dap.lua │   ├── editor.lua │   ├── lsp.lua │   ├── telescope.lua │   ├── ui.lua │   └── utility.lua
 ```
 
 ## Plugins
@@ -59,12 +56,14 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - PowerShell Language Server Protocol (LSP) Unterstützung, bietet Autocomplete und Fehlerüberprüfung für PowerShell-Skripte.
 - **jose-elias-alvarez/null-ls.nvim**:
   - Integration von externen Linter-, Formatter- und anderen Tools in den Neovim LSP. Unterstützt benutzerdefinierte Konfigurationen für verschiedene Sprachen.
-  - Beispiel für die Konfiguration von `stylua` für Lua-Dateien:
+  - Beispiel für die Konfiguration von `clang_format` für mehrere Sprachen:
 
     ```lua
-    null_ls.setup {
+    require('null-ls').setup {
       sources = {
-        null_ls.builtins.formatting.stylua,
+        require('null-ls').builtins.formatting.clang_format.with {
+          filetypes = { 'c', 'cpp', 'cs', 'typescript', 'javascript', 'json' },
+        },
       },
     }
     ```
@@ -78,6 +77,8 @@ Die Konfigurationsdateien sind wie folgt organisiert:
     - Automatische Installation von Tools, die von LSPs verwendet werden.
   - **j-hui/fidget.nvim**:
     - Zeigt nützliche Status-Updates für LSP an.
+  - **nvim-lua/lsp-status.nvim**:
+    - Anzeige des LSP-Status in der Statusleiste
   - **hrsh7th/cmp-nvim-lsp**:
     - Zusätzliche LSP-Fähigkeiten für nvim-cmp.
 
@@ -94,7 +95,7 @@ Die Konfigurationsdateien sind wie folgt organisiert:
 - **stevearc/conform.nvim**:
   - Automatisches Formatieren von Code beim Speichern.
 
-### Theme Plugins
+### UI Plugins
 
 - **olimorris/onedarkpro.nvim**:
   - Farbschema-Plugin, das das beliebte OneDark-Farbschema bereitstellt.
@@ -123,6 +124,17 @@ Die Konfigurationsdateien sind wie folgt organisiert:
     }
     ```
 
+### Fuzzy Finder Plugins
+
+- **nvim-telescope/telescope.nvim**:
+  - Fuzzy Finder, der Dateien, LSP-Symbole und vieles mehr durchsuchen kann.
+  - Abhängigkeiten:
+    - **nvim-lua/plenary.nvim**: Hilfsbibliothek für Neovim Plugins.
+    - **nvim-telescope/telescope-fzf-native.nvim**: FZF-Suchalgorithmus-Unterstützung für Telescope.
+    - **nvim-telescope/telescope-ui-select.nvim**: Ermöglicht die Nutzung von Telescope für die Neovim UI-Auswahl.
+    - **nvim-tree/nvim-web-devicons**: Icons für eine ansprechendere Darstellung (erfordert Nerd Fonts).
+    - **nvim-telescope/telescope-file-browser.nvim**: Dateibrowser-Erweiterung für Telescope.
+
 ### DAP Plugins
 
 - **mfussenegger/nvim-dap**:
@@ -130,7 +142,6 @@ Die Konfigurationsdateien sind wie folgt organisiert:
   - Konfigurationen für .NET (netcoredbg) und PowerShell (PSES - PowerShell Editor Services).
 - **rcarriga/nvim-dap-ui**:
   - Benutzeroberfläche für nvim-dap, um Debugging-Informationen grafisch anzuzeigen.
-
 ## Installation
 
 1. Klone dieses Repository in dein Neovim-Konfigurationsverzeichnis:
