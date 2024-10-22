@@ -1,9 +1,5 @@
 # neovim configuration
 
-# Meine Neovim-Konfiguration
-
-Dies ist meine persönliche Neovim-Konfiguration, die verschiedene Plugins und Anpassungen enthält, um meinen Workflow zu optimieren.
-
 ## Inhaltsverzeichnis
 
 - [Ordnerstruktur](#ordnerstruktur)
@@ -16,12 +12,14 @@ Dies ist meine persönliche Neovim-Konfiguration, die verschiedene Plugins und A
   - [DAP Plugins](#dap-plugins)
   - [Fuzzy Finder Plugins](#fuzzy-finder-plugins)
   - [Key Mapping Plugins](#key-mapping-plugins)
+  - [Indentation Plugins](#indentation-plugins)
+  - [Additional Plugins](#additional-plugins)
 
 ## Ordnerstruktur
 
 Die Konfigurationsdateien sind wie folgt organisiert:
 
-~/.config/nvim/ ├── init.lua └── lua ├── basicAutocommands.lua ├── globals.lua ├── lazyInstallation.lua ├── options.lua ├── plugins │   ├── completion.lua │   ├── dap.lua │   ├── editor.lua │   ├── lsp.lua │   ├── telescope.lua │   ├── which-key.lua │   ├── ui.lua │   └── utility.lua
+~/.config/nvim/ ├── init.lua └── lua ├── basicAutocommands.lua ├── globals.lua ├── lazyInstallation.lua ├── options.lua ├── plugins │   ├── completion.lua │   ├── dap.lua │   ├── editor.lua │   ├── lsp.lua │   ├── telescope.lua │   ├── which-key.lua │   ├── indent-blankline.lua │   ├── prettier.lua │   ├── copilot.lua │   ├── todo-comments.lua │   ├── mini.lua │   ├── treesitter.lua │   ├── ui.lua │   └── utility.lua
 
 Copy
 
@@ -152,6 +150,104 @@ Copy
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+    }
+    ```
+
+### Indentation Plugins
+
+- **lukas-reineke/indent-blankline.nvim**:
+  - Ein Plugin zur Anzeige von Einzugsführungen (indent guides).
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    require('indent_blankline').setup {
+      char = "│",
+      show_trailing_blankline_indent = false,
+      show_first_indent_level = true,
+      use_treesitter = true,
+      show_current_context = true,
+      show_current_context_start = true,
+    }
+    ```
+
+### Additional Plugins
+
+- **prettier/vim-prettier**:
+  - Ein Plugin zur Verwendung von Prettier zum Formatieren von Code.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    return {
+      'prettier/vim-prettier',
+      run = 'yarn install --frozen-lockfile --production',
+      cmd = 'Prettier',
+      ft = { 'javascript', 'typescript', 'css', 'scss', 'json', 'markdown' },
+    }
+    ```
+- **github/copilot.vim**:
+  - Ein Plugin zur Integration von GitHub Copilot in Neovim.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    return {
+      'github/copilot.vim',
+      config = function()
+        vim.g.copilot_no_tab_map = true
+        vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      end,
+    }
+    ```
+- **folke/todo-comments.nvim**:
+  - Ein Plugin zur Hervorhebung und Handhabung von TODO-Kommentaren.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    return {
+      'folke/todo-comments.nvim',
+      event = 'VimEnter',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      opts = { signs = false },
+    }
+    ```
+- **echasnovski/mini.nvim**:
+  - Eine Sammlung verschiedener kleiner unabhängiger Plugins/Module.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    return {
+      'echasnovski/mini.nvim',
+      config = function()
+        require('mini.ai').setup { n_lines = 500 }
+        require('mini.surround').setup()
+        local statusline = require 'mini.statusline'
+        statusline.setup { use_icons = vim.g.have_nerd_font }
+        statusline.section_location = function()
+          return '%2l:%-2v'
+        end
+      end,
+    }
+    ```
+- **nvim-treesitter/nvim-treesitter**:
+  - Ein Plugin zur Verbesserung der Syntaxhervorhebung und -bearbeitung.
+  - Beispiel für die Konfiguration:
+
+    ```lua
+    return {
+      'nvim-treesitter/nvim-treesitter',
+      build = ':TSUpdate',
+      opts = {
+        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'c_sharp' },
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'ruby' },
+        },
+        indent = { enable = true, disable = { 'ruby' } },
+        folding = { enable = true, disable = {} },
+      },
+      config = function(_, opts)
+        require('nvim-treesitter.configs').setup(opts)
+      end,
     }
     ```
 
