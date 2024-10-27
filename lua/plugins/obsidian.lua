@@ -6,26 +6,26 @@ return {
       workspaces = {
         {
           name = 'personal',
-          path = '~/vaults/personal',
+          path = os.getenv 'PERSONAL_VAULT_PATH',
         },
         {
           name = 'work',
-          path = '~/vaults/work',
+          path = os.getenv 'WORK_VAULT_PATH',
           overrides = {
-            notes_subdir = 'notes',
+            notes_subdir = 'Zettelkasten',
           },
         },
       },
 
-      notes_subdir = 'notes',
+      notes_subdir = 'Zettelkasten',
       log_level = vim.log.levels.INFO,
 
       daily_notes = {
-        folder = 'notes/dailies',
-        date_format = '%Y-%m-%d',
+        folder = 'obsidian/daily',
+        date_format = '%Y%m%d',
         alias_format = '%B %-d, %Y',
-        default_tags = { 'daily-notes' },
-        template = nil,
+        default_tags = { 'daily' },
+        template = 'obsidian/templates/dailyT',
       },
 
       completion = {
@@ -102,8 +102,8 @@ return {
       end,
 
       templates = {
-        folder = 'templates',
-        date_format = '%Y-%m-%d',
+        folder = 'obsidian/templates',
+        date_format = '%Y%m%d',
         time_format = '%H:%M',
         substitutions = {},
       },
@@ -185,7 +185,7 @@ return {
       },
 
       attachments = {
-        img_folder = 'assets/imgs',
+        img_folder = 'obsidian/img',
         img_name_func = function()
           return string.format('%s-', os.time())
         end,
