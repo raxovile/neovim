@@ -24,6 +24,7 @@ require('lazy').setup({
   { import = 'plugins.todo-comments' },
   { import = 'plugins.mini' },
   { import = 'plugins.treesitter' },
+  { import = 'plugins.obsidian' },
 }, {
   ui = {
     -- Customize the LazyVim UI

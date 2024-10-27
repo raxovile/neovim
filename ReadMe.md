@@ -14,6 +14,7 @@
   - [Key Mapping Plugins](#key-mapping-plugins)
   - [Indentation Plugins](#indentation-plugins)
   - [Additional Plugins](#additional-plugins)
+  - [Obsidian Plugin](#obsidian-plugin)
 
 ## Ordnerstruktur
 
