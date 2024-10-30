@@ -27,7 +27,7 @@ end)
 -- 1 = Conceal-Zeichen werden nur versteckt, wenn sie Ersatzzeichen haben,
 -- 2 = Alle Conceal-Zeichen werden versteckt.
 -- Ein höherer Wert führt dazu, dass mehr Zeichen ersetzt werden.
-vim.opt_local.conceallevel = 2
+vim.opt_local.conceallevel = 1
 
 -- Enable break indent
 vim.opt.breakindent = true
