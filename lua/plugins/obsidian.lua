@@ -2,7 +2,6 @@ return {
   'epwalsh/obsidian.nvim',
   event = 'BufReadPre',
   config = function()
-    local obsidian = require 'obsidian'
     local obsidian_path = os.getenv 'OBSIDIAN_PATH'
 
     require('obsidian').setup {
@@ -169,4 +168,13 @@ return {
       },
     }
   end,
+
+  {
+    'hisbaan/dataview.nvim',
+    event = { 'BufEnter ' .. os.getenv 'OBSIDIAN_PATH' .. '**' },
+    opts = {
+      vault_dir = os.getenv 'OBSIDIAN_PATH',
+      buffer_type = 'float',
+    },
+  },
 }
