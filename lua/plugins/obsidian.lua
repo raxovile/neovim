@@ -7,11 +7,11 @@ return {
     require('obsidian').setup {
       workspaces = {
         {
-          name = 'personal',
+          name = 'raxovile_2.0',
           path = obsidian_path .. '/raxovile_2.0',
         },
         {
-          name = 'work',
+          name = 'ok_vault_2.0',
           path = obsidian_path .. '/ok_vault_2.0',
         },
       },
