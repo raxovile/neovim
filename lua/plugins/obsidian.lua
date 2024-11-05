@@ -2,18 +2,17 @@ return {
   'epwalsh/obsidian.nvim',
   event = 'BufReadPre',
   config = function()
+    local obsidian_path = os.getenv 'OBSIDIAN_PATH'
+
     require('obsidian').setup {
       workspaces = {
         {
           name = 'personal',
-          path = os.getenv 'PERSONAL_VAULT_PATH',
+          path = obsidian_path .. '/raxovile_2.0',
         },
         {
           name = 'work',
-          path = os.getenv 'WORK_VAULT_PATH',
-          overrides = {
-            notes_subdir = 'Zettelkasten',
-          },
+          path = obsidian_path .. '/ok_vault_2.0',
         },
       },
 
